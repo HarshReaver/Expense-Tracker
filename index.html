@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker & Budget Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Expense Tracker & Budget Planner</h1>
+      <p>Manage income, expenses, budgets, and get alerts for unusual spending.</p>
+    </header>
+
+    <section class="panels">
+      <div class="panel budget-panel">
+        <h2>Budget Settings</h2>
+        <form id="budget-form">
+          <label for="budget-category">Category</label>
+          <select id="budget-category" required>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Bills">Bills</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Misc">Misc</option>
+          </select>
+          <label for="budget-amount">Monthly Budget</label>
+          <input type="number" id="budget-amount" min="0" step="0.01" placeholder="Budget amount" required />
+          <button type="submit">Set Budget</button>
+        </form>
+      </div>
+
+      <div class="panel transaction-panel">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+          <label for="transaction-type">Type</label>
+          <select id="transaction-type" required>
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+          <label for="transaction-amount">Amount</label>
+          <input type="number" id="transaction-amount" min="0" step="0.01" placeholder="Amount" required />
+          <label for="transaction-category">Category</label>
+          <select id="transaction-category" required>
+            <option value="Salary">Salary</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Bills">Bills</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Misc">Misc</option>
+          </select>
+          <label for="transaction-date">Date</label>
+          <input type="date" id="transaction-date" required />
+          <label for="transaction-description">Description</label>
+          <input type="text" id="transaction-description" maxlength="100" placeholder="Details" required />
+          <button type="submit">Add Transaction</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="summary-panel">
+      <div class="card">
+        <h3>Total Income</h3>
+        <p id="total-income">$0.00</p>
+      </div>
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p id="total-expenses">$0.00</p>
+      </div>
+      <div class="card">
+        <h3>Remaining Balance</h3>
+        <p id="remaining-balance">$0.00</p>
+      </div>
+    </section>
+
+    <section class="alerts-panel">
+      <h2>Alerts</h2>
+      <div id="alerts-container"></div>
+    </section>
+
+    <section class="tables-panel">
+      <div class="table-card">
+        <h2>Transactions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-table-body"></tbody>
+        </table>
+      </div>
+      <div class="table-card">
+        <h2>Category Summary</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Spent</th>
+              <th>Budget</th>
+              <th>Remaining</th>
+            </tr>
+          </thead>
+          <tbody id="category-summary-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="controls-panel">
+      <button id="undo-button" class="secondary">Undo Last Transaction</button>
+      <button id="queue-add-button" class="secondary">Queue Recurring Payment</button>
+      <button id="process-queue-button" class="secondary">Process Scheduled Payments</button>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
