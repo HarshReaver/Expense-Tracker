@@ -28,26 +28,6 @@ This is a client-side (no backend) web app. All data lives in memory while the p
 
 **Runtime flow:** User actions (submit transaction/budget, undo, schedule payment) trigger JS handlers → handlers update the in-memory model → calculations/alerts run → the UI is re-rendered to reflect the latest state.
 
-```mermaid
-flowchart TD
-  U[User] -->|Clicks / Submits forms| UI[index.html UI عناصر]
-  UI -->|DOM events| H[Event Handlers (script.js)]
-
-  H --> M[In-memory Data Model]
-  M --> T[Transactions Array/List]
-  M --> S[Undo Stack]
-  M --> Q[Recurring Payments Queue]
-
-  H --> C[Calculations & Rules]
-  C --> B[Budgets by Category]
-  C --> A[Alerts & Insights]
-  C --> O[Sorting / Top Categories]
-
-  H --> R[Render / DOM Update]
-  R --> UI
-
-  note1((No backend / no database)) --- M
-```
 
 ## Usage
 
